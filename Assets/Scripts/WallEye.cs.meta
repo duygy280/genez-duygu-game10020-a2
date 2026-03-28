@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2b728cf0f6a1fc04d86a830ef16dd990
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - eyeClosed: {instanceID: 0}
+  - eyeOpened: {instanceID: 0}
+  - eyeDefeated: {instanceID: 0}
+  - character: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

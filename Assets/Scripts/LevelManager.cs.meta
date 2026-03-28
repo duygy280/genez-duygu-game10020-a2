@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 560411c83b2cc8c459265ce7c4794397
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - uiManager: {instanceID: 0}
+  - inventoryManager: {instanceID: 0}
+  - character: {instanceID: 0}
+  - barriers: {instanceID: 0}
+  - toggle: {instanceID: 0}
+  - wallEye: {instanceID: 0}
+  - door: {instanceID: 0}
+  - inventoryItems: {instanceID: 0}
+  - pumpkinPrefab: {instanceID: 0}
+  - lanternPrefab: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
