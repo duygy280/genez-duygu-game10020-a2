@@ -1,16 +1,12 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour
 {
     public Sprite doorLocked;
     public Sprite doorOpen;
-
-    public String sceneName;
+    public string sceneName;
 
     bool lockedState = true;
     SpriteRenderer spriteRenderer;
@@ -31,9 +27,10 @@ public class Door : MonoBehaviour
         UpdateState();
     }
 
-    public void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (!lockedState && other.gameObject.CompareTag("Character"))
+        //if door is unlocked and player enters load next scene
+        if (!lockedState && other.CompareTag("Character"))
         {
             SceneManager.LoadScene(sceneName);
         }

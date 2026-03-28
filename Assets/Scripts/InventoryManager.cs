@@ -49,12 +49,19 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    
+
     public void DropInventory()
     {
         if (inventory[activeItem] > 0)
         {
             inventory[activeItem] -= 1;
             OnInventoryChanged.Invoke();
+
+            if (activeItem == InventoryItem.Pumpkin)
+            {
+                
+            }
 
             OnInventorySpawned.Invoke(activeItem);
         }

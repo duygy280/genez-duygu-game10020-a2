@@ -51,6 +51,22 @@ public class Character : MonoBehaviour
     float rockTimer = 0.0f;
     bool showInventory = false;
 
+
+    // heal player
+    public void Heal(int amount)
+    {
+        health += amount;
+
+    //max health
+        if (health > 3)
+            health = 3;
+
+        Debug.Log("Player Healed: " + health);
+
+        //update UI
+        OnHealthChanged.Invoke(health);
+    }
+
     void Awake()
     {
         //initialize events
