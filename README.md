@@ -24,3 +24,5 @@ Enemy → OnHit → UI Feedback
 Enemy → OnDeath → Attached Gameplay Response
 Character → OnHealthChanged → Update UI with Health
 Character → OnPlayerDeath → Produce Game Over Screen
+## My Gameplay Video
+https://youtu.be/tddCRbjz8sg
