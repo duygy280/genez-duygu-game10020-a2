@@ -15,6 +15,8 @@ Health: The player has three health points; and damage taken will fire and cause
 
 UI: Displays the user's health level, the contents of their inventory and the Game Over screen.
 
+Chest System: Chests can be hit with the shovel to restore health.
+
 Restart: The player can restart the game once they die.
 
 Event Flow
