@@ -37,11 +37,13 @@ public class Shovel : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("hit something");
         // Check if the object we hit implements IHittable
         IHittable hittable = other.GetComponent<IHittable>();
 
         if (hittable != null)
         {
+            Debug.Log("hit enemy");
             // Call the Hit function on that object
             hittable.Hit(gameObject);
         }

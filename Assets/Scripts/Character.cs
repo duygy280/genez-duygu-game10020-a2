@@ -15,6 +15,8 @@ public class Character : MonoBehaviour
     public float moveSpeed = 5.0f;
     public float gravity = -9.81f;
     public float throwForce = 1.0f;
+    private bool canTakeDamage = true;
+    public float damageCooldown = 1f;
 
     public Rock rockPrefab;
 
@@ -24,11 +26,18 @@ public class Character : MonoBehaviour
     public InputActionReference dropInventoryInput;
     public InputActionReference showInventoryInput;
 
+    [System.Serializable]
+    public class IntEvent : UnityEngine.Events.UnityEvent<int> { }
+
     [HideInInspector]
     public UnityEvent OnItemDropped;
 
     [HideInInspector]
     public UnityEvent<bool> OnInventoryShown;
+    //health change event
+    public IntEvent OnHealthChanged;
+    //death event
+    public UnityEvent OnPlayerDeath;
 
     public Shovel shovel;
     public Rock rock;
@@ -44,7 +53,11 @@ public class Character : MonoBehaviour
 
     void Awake()
     {
+        //initialize events
         if (OnItemDropped == null) OnItemDropped = new UnityEvent();
+        if (OnHealthChanged == null) OnHealthChanged = new IntEvent();
+        if (OnPlayerDeath == null) OnPlayerDeath = new UnityEvent();
+
 
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
@@ -77,6 +90,8 @@ public class Character : MonoBehaviour
     private void Start()
     {
         UpdateWeapon();
+        //ui with starting health
+        OnHealthChanged.Invoke(health);
     }
     private void Update()
     {
@@ -213,18 +228,32 @@ public class Character : MonoBehaviour
     //added= damage system
     public void TakeDamage(int amount)
     {
+        if (!canTakeDamage) return;
         health -= amount;
         Debug.Log("Player Health: " + health);
+        //update Ui
+        OnHealthChanged.Invoke(health);
+
         if (health <= 0)
         {
             Die();
         }
+        //start cooldown
+        StartCoroutine(DamageCooldown());
+    }
+    IEnumerator DamageCooldown()
+    {
+        canTakeDamage = false;
+        yield return new WaitForSeconds(damageCooldown);
+        canTakeDamage = true;
     }
 
     //addded = gameover 
     void Die()
     {
         Debug.Log("GAME OVER");
+        //trigger ui event
+        OnPlayerDeath.Invoke();
 
         Time.timeScale = 0f;
     }
